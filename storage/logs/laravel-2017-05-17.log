@@ -1,0 +1,204 @@
+[2017-05-17 09:02:31] local.ERROR: exception 'RuntimeException' with message 'Not enough arguments.' in /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Input/Input.php:77
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(248): Symfony\Component\Console\Input\Input->validate()
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 {main}  
+[2017-05-17 09:32:38] local.ERROR: exception 'RuntimeException' with message 'Not enough arguments.' in /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Input/Input.php:77
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(248): Symfony\Component\Console\Input\Input->validate()
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 {main}  
+[2017-05-17 09:32:49] local.ERROR: exception 'InvalidArgumentException' with message 'Command "make:migrate" is not defined.
+
+Did you mean one of these?
+    make:migration
+    make:controller
+    make:middleware
+    make:request
+    make:provider
+    make:console
+    make:event
+    make:model
+    make:command' in /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php:549
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(192): Symfony\Component\Console\Application->find('make:migrate')
+#1 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2017-05-17 09:33:01] local.ERROR: exception 'RuntimeException' with message 'Not enough arguments.' in /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Input/Input.php:77
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(248): Symfony\Component\Console\Input\Input->validate()
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 {main}  
+[2017-05-17 09:39:54] local.ERROR: exception 'RuntimeException' with message 'Not enough arguments.' in /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Input/Input.php:77
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(248): Symfony\Component\Console\Input\Input->validate()
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 {main}  
+[2017-05-17 10:51:01] local.ERROR: exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'54.254.201.62' (using password: YES)' in /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=54.2...', 'root', 'dbuser7890', Array)
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=54.2...', Array, Array)
+#2 /opt/lampp/htdocs/laravel/vendor/compiled.php(10673): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /opt/lampp/htdocs/laravel/vendor/compiled.php(10669): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /opt/lampp/htdocs/laravel/vendor/compiled.php(10587): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /opt/lampp/htdocs/laravel/vendor/compiled.php(10542): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(167): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(115): Illuminate\Database\Migrations\DatabaseMigrationRepository->getConnection()
+#8 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/InstallCommand.php(52): Illuminate\Database\Migrations\DatabaseMigrationRepository->createRepository()
+#9 [internal function]: Illuminate\Database\Console\Migrations\InstallCommand->fire()
+#10 /opt/lampp/htdocs/laravel/vendor/compiled.php(925): call_user_func_array(Array, Array)
+#11 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(115): Illuminate\Container\Container->call(Array)
+#12 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\InstallCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 {main}  
+[2017-05-17 10:58:48] local.ERROR: exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'54.254.201.62' (using password: YES)' in /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=54.2...', 'root', 'dbuser7890', Array)
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=54.2...', Array, Array)
+#2 /opt/lampp/htdocs/laravel/vendor/compiled.php(10673): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /opt/lampp/htdocs/laravel/vendor/compiled.php(10669): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /opt/lampp/htdocs/laravel/vendor/compiled.php(10587): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /opt/lampp/htdocs/laravel/vendor/compiled.php(10542): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(167): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(115): Illuminate\Database\Migrations\DatabaseMigrationRepository->getConnection()
+#8 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/InstallCommand.php(52): Illuminate\Database\Migrations\DatabaseMigrationRepository->createRepository()
+#9 [internal function]: Illuminate\Database\Console\Migrations\InstallCommand->fire()
+#10 /opt/lampp/htdocs/laravel/vendor/compiled.php(925): call_user_func_array(Array, Array)
+#11 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(115): Illuminate\Container\Container->call(Array)
+#12 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\InstallCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 {main}  
+[2017-05-17 10:59:00] local.ERROR: exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'54.254.201.62' (using password: YES)' in /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=54.2...', 'root', 'dbuser7890', Array)
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=54.2...', Array, Array)
+#2 /opt/lampp/htdocs/laravel/vendor/compiled.php(10673): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /opt/lampp/htdocs/laravel/vendor/compiled.php(10669): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /opt/lampp/htdocs/laravel/vendor/compiled.php(10587): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /opt/lampp/htdocs/laravel/vendor/compiled.php(10542): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(167): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(135): Illuminate\Database\Migrations\DatabaseMigrationRepository->getConnection()
+#8 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(371): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#9 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/StatusCommand.php(48): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#10 [internal function]: Illuminate\Database\Console\Migrations\StatusCommand->fire()
+#11 /opt/lampp/htdocs/laravel/vendor/compiled.php(925): call_user_func_array(Array, Array)
+#12 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(115): Illuminate\Container\Container->call(Array)
+#13 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\StatusCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 {main}  
+[2017-05-17 11:08:24] local.ERROR: exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'54.254.201.62' (using password: YES)' in /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=54.2...', 'root', 'dbuser7890', Array)
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=54.2...', Array, Array)
+#2 /opt/lampp/htdocs/laravel/vendor/compiled.php(10673): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /opt/lampp/htdocs/laravel/vendor/compiled.php(10669): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /opt/lampp/htdocs/laravel/vendor/compiled.php(10587): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /opt/lampp/htdocs/laravel/vendor/compiled.php(10542): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(167): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(135): Illuminate\Database\Migrations\DatabaseMigrationRepository->getConnection()
+#8 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(371): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#9 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/StatusCommand.php(48): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#10 [internal function]: Illuminate\Database\Console\Migrations\StatusCommand->fire()
+#11 /opt/lampp/htdocs/laravel/vendor/compiled.php(925): call_user_func_array(Array, Array)
+#12 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(115): Illuminate\Container\Container->call(Array)
+#13 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\StatusCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 {main}  
+[2017-05-17 11:08:28] local.ERROR: exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'54.254.201.62' (using password: YES)' in /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=54.2...', 'root', 'dbuser7890', Array)
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=54.2...', Array, Array)
+#2 /opt/lampp/htdocs/laravel/vendor/compiled.php(10673): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /opt/lampp/htdocs/laravel/vendor/compiled.php(10669): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /opt/lampp/htdocs/laravel/vendor/compiled.php(10587): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /opt/lampp/htdocs/laravel/vendor/compiled.php(10542): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(167): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(135): Illuminate\Database\Migrations\DatabaseMigrationRepository->getConnection()
+#8 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(371): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#9 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/StatusCommand.php(48): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#10 [internal function]: Illuminate\Database\Console\Migrations\StatusCommand->fire()
+#11 /opt/lampp/htdocs/laravel/vendor/compiled.php(925): call_user_func_array(Array, Array)
+#12 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(115): Illuminate\Container\Container->call(Array)
+#13 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\StatusCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 {main}  
+[2017-05-17 11:36:02] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42000] [1049] Unknown database 'laravel'' in /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:47
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(47): PDO->__construct('mysql:host=127....', 'root', 'dbuser7890', Array)
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(20): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#2 /opt/lampp/htdocs/laravel/vendor/compiled.php(10673): Illuminate\Database\Connectors\MySqlConnector->connect(Array)
+#3 /opt/lampp/htdocs/laravel/vendor/compiled.php(10669): Illuminate\Database\Connectors\ConnectionFactory->createSingleConnection(Array)
+#4 /opt/lampp/htdocs/laravel/vendor/compiled.php(10587): Illuminate\Database\Connectors\ConnectionFactory->make(Array, 'mysql')
+#5 /opt/lampp/htdocs/laravel/vendor/compiled.php(10542): Illuminate\Database\DatabaseManager->makeConnection('mysql')
+#6 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(167): Illuminate\Database\DatabaseManager->connection(NULL)
+#7 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/DatabaseMigrationRepository.php(135): Illuminate\Database\Migrations\DatabaseMigrationRepository->getConnection()
+#8 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(371): Illuminate\Database\Migrations\DatabaseMigrationRepository->repositoryExists()
+#9 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/StatusCommand.php(48): Illuminate\Database\Migrations\Migrator->repositoryExists()
+#10 [internal function]: Illuminate\Database\Console\Migrations\StatusCommand->fire()
+#11 /opt/lampp/htdocs/laravel/vendor/compiled.php(925): call_user_func_array(Array, Array)
+#12 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(115): Illuminate\Container\Container->call(Array)
+#13 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\StatusCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 {main}  
+[2017-05-17 11:40:48] local.ERROR: exception 'RuntimeException' with message 'Not enough arguments.' in /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Input/Input.php:77
+Stack trace:
+#0 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(248): Symfony\Component\Console\Input\Input->validate()
+#1 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(874): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(195): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /opt/lampp/htdocs/laravel/vendor/symfony/console/Symfony/Component/Console/Application.php(126): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /opt/lampp/htdocs/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /opt/lampp/htdocs/laravel/artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 {main}  
