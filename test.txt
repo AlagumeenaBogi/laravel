@@ -1,0 +1,245 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script>
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Sales Invoice Product',
+        colorByPoint: true,
+        data: 
+            [<?php  foreach ($transaction_amount_mode_arr as $key => $value)
+                                                    {
+                                                         
+                                                             echo $catogry= "{
+                                                                            name: '$key',
+                                                                            y: $value
+                                                                           },";
+                                                    }?>]
+            /*[{
+            name: 'Aromatic Rice',
+            y: 56.33
+        }, {
+            name: 'Roasted Flax Seeds ',
+            y: 24.03,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Dates Palm Jagger',
+            y: 10.38
+        }, {
+            name: 'Traditional Millet Jwar',
+            y: 4.77
+        }, {
+            name: 'Dates Palm Sugar',
+            y: 0.91
+        }, {
+            name: 'Black Pepper',
+            y: 0.2
+        }]*/
+    }]
+});
+
+Highcharts.chart('current_asset', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false
+    },
+    
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+                dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %<br>Amount : {point.y:.1f}',
+                style: {
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+                },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '75%']
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Asset %',
+        innerSize: '50%',
+        data: [
+            ['Cash in Hand',  <?=$transaction_cash_mode;?>],
+            ['Cash in Bank',       <?=$transaction_bank_mode;?>],
+            {
+                name: 'Proprietary or Undetectable',
+                y: 0.2,
+                dataLabels: {
+                    enabled: false
+                }
+            }
+        ]
+    }]
+});
+</script>
+
+ <div class="row">
+                <div class="col-md-6">
+                    <div class="view-info">
+                        <div class="view-info-content" style="min-height: 300px;">
+                            <h3 class="lead">Product Wise Sales invoice Details</h3>
+                              <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="view-info">
+                        <div class="view-info-content" style="min-height: 300px;">
+                            <h3 class="lead">Current Asset</h3>
+                              <div id="current_asset" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6EANxmzzVVj50H_4JEkFa7NQvMiwBg-M"></script><!----mapv=3.exp&signed_in=true-->
+
+  <div id="map" style="width: 100%; height: 400px;"></div>
+<script type="text/javascript">
+                var locations = ['Place: <b>Madurai</b>',9.9252007,78.1197754, 1];   
+        var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: new google.maps.LatLng(-39.92, 151.25),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+        var markers = new Array();
+        for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                        map: map
+                });
+                markers.push(marker);
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                                infowindow.setContent(locations[i][0]);
+                                infowindow.open(map, marker);
+                        }
+                })(marker, i));
+        }
+        var bounds = new google.maps.LatLngBounds();
+        $.each(markers, function (index, marker) { bounds.extend(marker.position); });
+        map.fitBounds(bounds);
+
+
+</script>
+  <?php
+/*---MAP_STAET - 27.2.16--------*/
+
+function geocode($place){
+   $place = urlencode($place);
+    $url = "http://maps.google.com/maps/api/geocode/json?address={$place}";
+    $resp_json = file_get_contents($url);
+    $resp = json_decode($resp_json, true);
+    if($resp['status']=='OK'){
+        $lati = $resp['results'][0]['geometry']['location']['lat'];
+        $longi = $resp['results'][0]['geometry']['location']['lng'];
+        $geo_location_values_arr=$lati."##".$longi;
+       // echo $geo_location_values_arr."<BR>";
+        return $geo_location_values_arr;
+    }else{
+        return false;
+    }
+}
+/*---MAP_END - 27.2.16--------*/
+$village_name="chennai";
+       $geo_location_value=geocode($village_name);
+                                                        $today_geo_display=explode('##',$geo_location_value);
+                                                        $latitude= $today_geo_display[0];
+                                                        $longitude = $today_geo_display[1];
+                                                        //echo "------".$latitude."---".$longitude."<BR>";
+                                                        $group_name="Valar";
+if($latitude == "")
+$latitude = "9.9000";
+if($longitude == "")
+$longitude = "78.1000";
+?>
+
+                                                        <a style="cursor: pointer;" data-toggle="modal" data-target="#myModal" id="reg_place">
+                                                        <?=$village_name;?>
+                                                        <i class="fa fa-search"></i>
+                                                        </a>
+
+
+                    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><!----map _start _27.2.16--->
+                                    <div class="modal-dialog" style="width:700px;">
+                                            <div class="modal-content">
+                                                    <div class="modal-body">
+                                                    <h3 class="modal-title view-info-underline" id="myModalLabel">
+                                                            Group Name: <?=$group_name;?> <BR>
+                                                            <span class="text-info"> Village Name: <?=$village_name;?></span>
+                                                            <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+                                                            <span aria-hidden="true">×</span>
+                                                            </button>
+                                                    </h3>
+                                                    <br>
+                                                    <div id="map-canvas" style="width:670px; height:400px;"></div>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </div>
+  <script>//map _start _27.2.16
+var reg;
+
+function initialize() { // Registration place
+
+	var reg_mapOptions = {
+	  zoom: 8,
+	  center: {lat: <?=$latitude?>, lng: <?=$longitude?>},
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	reg = new google.maps.Map(document.getElementById('map-canvas'), reg_mapOptions);
+
+	var reg_marker = new google.maps.Marker({
+	  position: {lat: <?=$latitude?>, lng: <?=$longitude?>},
+	  map: reg
+	});
+
+	var reg_infowindow = new google.maps.InfoWindow({
+	  content: 'Village Name: <b><?=$village_name?></b><BR>Group Name: <b><?=$group_name;?></b>'
+	});
+	google.maps.event.addListener(reg_marker, 'click', function() {
+		reg_infowindow.open(reg, reg_marker);
+	});
+	//$('#myModal').modal('show');
+	$('#reg_place').click(function(){
+		$('#myModal').show();
+			var reg_currCenter = reg.getCenter();
+			google.maps.event.trigger(reg, 'resize');
+			reg.setCenter(reg_currCenter);
+	});
+
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
