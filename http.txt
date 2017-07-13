@@ -529,3 +529,11 @@ public class UpSync extends AsyncTask<String,Void,String>{
     }
    
 }
+
+https://www.quora.com/What-is-the-difference-between-web-service-and-web-application
+https://www.youtube.com/watch?v=r_RnroxTg3Y
+https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/
+https://github.com/iagdotme/MyFirstTwitterApp
+https://github.com/J7mbo/twitter-api-php  ---its is correct
+https://iag.me/socialmedia/build-your-first-twitter-app-using-php-in-8-easy-steps/
+
