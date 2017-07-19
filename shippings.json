@@ -1,0 +1,411 @@
+{
+    "details": 
+	[
+      {
+        "shipment_no": "502",
+        "proforma_invoice_no": "VAPL/EXP/164/15-16",
+        "proforma_invoice_date": "28-Mar-2016",
+        "invoice_no": "VAPL/EXP/001/2016-17",
+        "invoice_date": "04-Apr-2016",
+        "planned_shipment_date": "04-May-2016",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "161.00 MTS"
+        },
+        "rate": {
+          "0": "265.00 MTS"
+        },
+        "amount": {
+          "0": "42665 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "15-Apr-2016",
+        "eta": "04-May-2016",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "171",
+        "proforma_invoice_no": "VAPL/EXP/160/15-16",
+        "proforma_invoice_date": "22-Mar-2016",
+        "invoice_no": "VAPL/EXP/177/2015-16",
+        "invoice_date": "23-Mar-2016",
+        "planned_shipment_date": "25-Apr-2016",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "230.00 MTS"
+        },
+        "rate": {
+          "0": "270.00 MTS"
+        },
+        "amount": {
+          "0": "62100 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "31-Mar-2016",
+        "eta": "25-Apr-2016",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "161",
+        "proforma_invoice_no": "VAPL/EXP/158/15-16",
+        "proforma_invoice_date": "14-Mar-2016",
+        "invoice_no": "VAPL/EXP/172",
+        "invoice_date": "15-Mar-2016",
+        "planned_shipment_date": "15-Apr-2016",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "230.00 MTS"
+        },
+        "rate": {
+          "0": "270.00 MTS"
+        },
+        "amount": {
+          "0": "62100 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "24-Mar-2016",
+        "eta": "15-Apr-2016",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "189",
+        "proforma_invoice_no": "VAPL/EXP/143/15-16",
+        "proforma_invoice_date": "24-Feb-2016",
+        "invoice_no": "VAPL/EXP/162",
+        "invoice_date": "29-Feb-2016",
+        "planned_shipment_date": "13-Mar-2016",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "230.00 MTS"
+        },
+        "rate": {
+          "0": "270.00 MTS"
+        },
+        "amount": {
+          "0": "62100 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "13-Mar-2016",
+        "eta": "31-Mar-2016",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "616",
+        "proforma_invoice_no": "VAPL/EXP/094/16-17",
+        "proforma_invoice_date": "16-Dec-2016",
+        "invoice_no": "VAPL/EXP/139/2016-17",
+        "invoice_date": "16-Mar-2017",
+        "planned_shipment_date": "23-Mar-2017",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "154.00 MTS"
+        },
+        "rate": {
+          "0": "278.00 MTS"
+        },
+        "amount": {
+          "0": "42812 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "29-Mar-2017",
+        "eta": "13-Apr-2017",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "558",
+        "proforma_invoice_no": "VAPL/EXP/094/16-17",
+        "proforma_invoice_date": "16-Dec-2016",
+        "invoice_no": "VAPL/EXP/118/2016-17",
+        "invoice_date": "21-Dec-2016",
+        "planned_shipment_date": "17-Feb-2017",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "154.00 MTS"
+        },
+        "rate": {
+          "0": "278.00 MTS"
+        },
+        "amount": {
+          "0": "42812 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "23-Feb-2017",
+        "eta": "20-Mar-2017",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "560",
+        "proforma_invoice_no": "VAPL/EXP/094/16-17",
+        "proforma_invoice_date": "16-Dec-2016",
+        "invoice_no": "VAPL/EXP/123/2016-17",
+        "invoice_date": "04-Jan-2017",
+        "planned_shipment_date": "14-Feb-2017",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "154.00 MTS"
+        },
+        "rate": {
+          "0": "278.00 MTS"
+        },
+        "amount": {
+          "0": "42812 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "17-Feb-2017",
+        "eta": "13-Mar-2017",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "533",
+        "proforma_invoice_no": "VAPL/EXP/094/16-17",
+        "proforma_invoice_date": "16-Dec-2016",
+        "invoice_no": "VAPL/EXP/115/2016-17",
+        "invoice_date": "16-Dec-2016",
+        "planned_shipment_date": "12-Jan-2017",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "154.00 MTS"
+        },
+        "rate": {
+          "0": "278.00 MTS"
+        },
+        "amount": {
+          "0": "42812 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "12-Jan-2017",
+        "eta": "26-Jan-2017",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "529",
+        "proforma_invoice_no": "VAPL/EXP/089/2016-17",
+        "proforma_invoice_date": "25-Nov-2016",
+        "invoice_no": "VAPL/EXP/111/2016-17",
+        "invoice_date": "02-Dec-2016",
+        "planned_shipment_date": "07-Jan-2017",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "154.00 MTS"
+        },
+        "rate": {
+          "0": "278.00 MTS"
+        },
+        "amount": {
+          "0": "42812 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "07-Jan-2017",
+        "eta": "23-Jan-2017",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "523",
+        "proforma_invoice_no": "VAPL/EXP/089/2016-17",
+        "proforma_invoice_date": "25-Nov-2016",
+        "invoice_no": "VAPL/EXP/109/2016-17",
+        "invoice_date": "30-Nov-2016",
+        "planned_shipment_date": "31-Dec-2016",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "154.00 MTS"
+        },
+        "rate": {
+          "0": "278.00 MTS"
+        },
+        "amount": {
+          "0": "42812 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "",
+        "eta": "",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "517",
+        "proforma_invoice_no": "VAPL/EXP/089/2016-17",
+        "proforma_invoice_date": "25-Nov-2016",
+        "invoice_no": "VAPL/EXP/107/2016-17",
+        "invoice_date": "26-Nov-2016",
+        "planned_shipment_date": "20-Dec-2016",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "154.00 MTS"
+        },
+        "rate": {
+          "0": "278.00 MTS"
+        },
+        "amount": {
+          "0": "42812 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "20-Dec-2016",
+        "eta": "05-Jan-2017",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "500",
+        "proforma_invoice_no": "VAPL/EXP/089/2016-17",
+        "proforma_invoice_date": "25-Nov-2016",
+        "invoice_no": "VAPL/EXP/102/2016-17",
+        "invoice_date": "26-Nov-2016",
+        "planned_shipment_date": "03-Dec-2016",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "154.00 MTS"
+        },
+        "rate": {
+          "0": "278.00 MTS"
+        },
+        "amount": {
+          "0": "42812 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "03-Dec-2016",
+        "eta": "22-Dec-2016",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "515",
+        "proforma_invoice_no": "VAPL/EXP/089/2016-17",
+        "proforma_invoice_date": "25-Nov-2016",
+        "invoice_no": "VAPL/EXP/103/2016-17",
+        "invoice_date": "26-Nov-2016",
+        "planned_shipment_date": "02-Dec-2016",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "154.00 MTS"
+        },
+        "rate": {
+          "0": "278.00 MTS"
+        },
+        "amount": {
+          "0": "42812 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "08-Dec-2016",
+        "eta": "24-Dec-2016",
+        "statuss": "6"
+      },
+      {
+        "shipment_no": "128",
+        "proforma_invoice_no": "VAPL/EXP/164/15-16",
+        "proforma_invoice_date": "28-Mar-2016",
+        "invoice_no": "VAPL/EXP/005/2016-17",
+        "invoice_date": "28-Apr-2016",
+        "planned_shipment_date": "03-Jun-2016",
+        "point_of_contact": {
+          "empid": "60097000005728"
+        },
+        "products": {
+          "0": ""
+        },
+        "quantity": {
+          "0": "161.00 MTS"
+        },
+        "rate": {
+          "0": "265.00 MTS"
+        },
+        "amount": {
+          "0": "42665 USD"
+        },
+        "product_image": {
+          "0": "http://52.40.87.111/images/item/5_kg_block_old_1.JPG"
+        },
+        "etd": "08-May-2016",
+        "eta": "03-Jun-2016",
+        "statuss": "6"
+      }
+    ]
+ }
