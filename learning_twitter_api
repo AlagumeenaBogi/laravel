@@ -1,0 +1,13 @@
+
+$settings = array(
+    'oauth_access_token' => "3232926711-kvMvNK5mFJlUFzCdtw3ryuwZfhIbLJtPX9e8E3Y",
+    'oauth_access_token_secret' => "EYrFp0lfNajBslYV3WgAGmpHqYZvvNxP5uxxSq8Dbs1wa",
+    'consumer_key' => "VXD22AD9kcNyNgsfW6cwkWRkw",
+    'consumer_secret' => "y0k3z9Y46V0DMAKGe4Az2aDtqNt9aXjg3ssCMCldUheGBT0YL9"
+); //THIS IS TESTING
+/*$settings = array(
+    'oauth_access_token' => "885468318596857857-7jR1h9A7cO7WJgmnQoGyJqI0gnrd9zi",
+    'oauth_access_token_secret' => " FPWFeQD5UUusaiwN01ovMCKZrjfLiUWF8Yyr1mHRDYPOD",
+    'consumer_key' => "bnm480mILWo1TT0v0wKuzdtiP",
+    'consumer_secret' => " Htz6Uc4YC5UXr9onNZBSFbniqcLuP6BVm3A3bwk1JArjKJw9SL"
+);*/ //THIS IS MEENA
