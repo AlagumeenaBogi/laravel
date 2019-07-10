@@ -1,0 +1,1058 @@
+MULTI LOGIN:
+https://hdtuto.com/article/laravel-57-multiple-authentication-example
+
+http://www.expertphp.in/article/laravel-5-database-seeder-example-with-insert-sample-user-data
+
+https://bcrypt-generator.com/
+
+https://itsolutionstuff.com/post/php-laravel-57-create-admin-panel-exampleexample.html
+
+
+https://www.mynotepaper.com/build-laravel-multiple-authentication-using-middleware-in-user-table.html
+
+https://medium.com/employbl/easily-build-administrator-login-into-a-laravel-5-app-8a942e4fef37
+
+https://filezilla-project.org/download.php?platform=win32
+
+https://sql-server-2000.en.softonic.com/
+
+https://www.microsoft.com/en-au/sql-server/sql-server-downloads
+
+https://dotnet.microsoft.com/download/thank-you/net48
+D:\xampp\htdocs\blog\app\Admin.php
+
+
+ADMIN WITH MULTIPLE AUTH:
+https://github.com/mabuak/laravel-sentinel-example
+
+https://github.com/bitfumes/laravel-multiauth
+
+
+Diffrent Port
+php -S localhost:9000 -t public/
+Diffrent host
+php -S  127.0.0.1:9000 -t public/
+<?php
+
+ 
+
+namespace App;
+
+ 
+
+use Illuminate\Notifications\Notifiable;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+ 
+
+class Admin extends Authenticatable
+
+{
+
+    use Notifiable;
+
+ 
+
+    /**
+
+     * The attributes that are mass assignable.
+
+     *
+
+     * @var array
+
+     */
+
+    protected $fillable = [
+
+        'name', 'email', 'password',
+
+    ];
+
+ 
+
+    /**
+
+     * The attributes that should be hidden for arrays.
+
+     *
+
+     * @var array
+
+     */
+
+    protected $hidden = [
+
+        'password', 'remember_token',
+
+    ];
+
+}
+
+D:\xampp\htdocs\blog\config\auth.php
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Defaults
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the default authentication "guard" and password
+    | reset options for your application. You may change these defaults
+    | as required, but they're a perfect start for most applications.
+    |
+    */
+
+    'defaults' => [
+        'guard' => 'web',
+        'passwords' => 'users',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Guards
+    |--------------------------------------------------------------------------
+    |
+    | Next, you may define every authentication guard for your application.
+    | Of course, a great default configuration has been defined for you
+    | here which uses session storage and the Eloquent user provider.
+    |
+    | All authentication drivers have a user provider. This defines how the
+    | users are actually retrieved out of your database or other storage
+    | mechanisms used by this application to persist your user's data.
+    |
+    | Supported: "session", "token"
+    |
+    */
+
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+		'admin' => [
+
+            'driver' => 'session',
+
+            'provider' => 'admins',
+
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Providers
+    |--------------------------------------------------------------------------
+    |
+    | All authentication drivers have a user provider. This defines how the
+    | users are actually retrieved out of your database or other storage
+    | mechanisms used by this application to persist your user's data.
+    |
+    | If you have multiple user tables or models you may configure multiple
+    | sources which represent each model / table. These sources may then
+    | be assigned to any extra authentication guards you have defined.
+    |
+    | Supported: "database", "eloquent"
+    |
+    */
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+		  'admins' => [
+
+            'driver' => 'eloquent',
+
+            'model' => App\Admin::class,
+
+        ]
+
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Resetting Passwords
+    |--------------------------------------------------------------------------
+    |
+    | You may specify multiple password reset configurations if you have more
+    | than one user table or model in the application and you want to have
+    | separate password reset settings based on the specific user types.
+    |
+    | The expire time is the number of minutes that the reset token should be
+    | considered valid. This security feature keeps tokens short-lived so
+    | they have less time to be guessed. You may change this as needed.
+    |
+    */
+
+    'passwords' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+		   'admins' => [
+
+            'provider' => 'admins',
+
+            'email' => 'auth.emails.password',
+
+            'table' => 'password_resets',
+
+            'expire' => 60,
+
+        ],
+    ],
+
+];
+
+D:\xampp\htdocs\blog\routes\web.php
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+//Auth::routes();
+
+ 
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+ 
+
+Route::get('admin-login', 'Auth\AdminLoginController@showLoginForm');
+
+Route::post('admin-login', ['as'=>'admin-login','uses'=>'Auth\AdminLoginController@login']);
+
+
+
+D:\xampp\htdocs\blog\app\Http\Controllers\Auth\AdminLoginController.php
+
+<?php
+
+ 
+
+namespace App\Http\Controllers\Auth;
+
+ 
+
+use App\Http\Controllers\Controller;
+
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use Illuminate\Http\Request;
+
+ 
+
+class AdminLoginController extends Controller
+
+{
+
+    /*
+
+    |--------------------------------------------------------------------------
+
+    | Login Controller
+
+    |--------------------------------------------------------------------------
+
+    |
+
+    | This controller handles authenticating users for the application and
+
+    | redirecting them to your home screen. The controller uses a trait
+
+    | to conveniently provide its functionality to your applications.
+
+    |
+
+    */
+
+ 
+
+    use AuthenticatesUsers;
+
+ 
+
+    protected $guard = 'admin';
+
+ 
+
+    /**
+
+     * Where to redirect users after login.
+
+     *
+
+     * @var string
+
+     */
+
+    protected $redirectTo = '/home';
+
+ 
+
+    /**
+
+     * Create a new controller instance.
+
+     *
+
+     * @return void
+
+     */
+
+    public function __construct()
+
+    {
+
+        $this->middleware('guest')->except('logout');
+
+    }
+
+ 
+
+    public function showLoginForm()
+
+    {
+
+        return view('auth.adminLogin');
+
+    }
+
+ 
+
+    public function login(Request $request)
+
+    {
+
+        if (auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
+            dd(auth()->guard('admin')->user());
+
+        }
+
+ 
+
+        return back()->withErrors(['email' => 'Email or password are wrong.']);
+
+    }
+
+}
+
+D:\xampp\htdocs\blog\resources\views\auth\adminLogin.blade.php
+
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+
+            <div class="content">
+                <div class="title m-b-md">
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card">
+
+                <div class="card-header">Admin {{ __('Login') }}</div>
+
+ 
+
+                <div class="card-body">
+
+                    <form method="POST" action="{{ route('admin-login') }}">
+
+                        @csrf 
+
+ 
+
+                        <div class="form-group row">
+
+                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+ 
+
+                            <div class="col-md-6">
+
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+
+ 
+
+                                @if ($errors->has('email'))
+
+                                    <span class="invalid-feedback">
+
+                                        <strong>{{ $errors->first('email') }}</strong>
+
+                                    </span>
+
+                                @endif
+
+                            </div>
+
+                        </div>
+
+ 
+
+                        <div class="form-group row">
+
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+ 
+
+                            <div class="col-md-6">
+
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+ 
+
+                                @if ($errors->has('password'))
+
+                                    <span class="invalid-feedback">
+
+                                        <strong>{{ $errors->first('password') }}</strong>
+
+                                    </span>
+
+                                @endif
+
+                            </div>
+
+                        </div>
+
+ 
+
+                        <div class="form-group row">
+
+                            <div class="col-md-6 offset-md-4">
+
+                                <div class="checkbox">
+
+                                    <label>
+
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+ 
+
+                        <div class="form-group row mb-0">
+
+                            <div class="col-md-8 offset-md-4">
+
+                                <button type="submit" class="btn btn-primary">
+
+                                    {{ __('Login') }}
+
+                                </button>
+
+                                
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+                </div>
+
+                <div class="links">
+                    <a href="https://laravel.com/docs">Docs</a>
+                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://blog.laravel.com">Blog</a>
+                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+TABLE:
+D:\xampp\htdocs\meena\projects\blockchain\main\routes\web.php
+D:\xampp\htdocs\meena\projects\blockchain\main\app\Admin.php
+D:\xampp\htdocs\meena\projects\blockchain\main\config\auth.php
+D:\xampp\htdocs\meena\projects\blockchain\main\app\Http\Controllers\Auth\AdminLoginController.php
+D:\xampp\htdocs\meena\projects\blockchain\main\resources\views\admin\auth\adminLogin.blade.php
+
+
+USERNAME:test@gmail.com
+PASSWORD:test@123
+
+
+************ADDTIONALLY*******************
+<?php
+
+ 
+
+namespace App\Http\Controllers\Auth;
+
+ 
+
+use App\Http\Controllers\Controller;
+
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use Illuminate\Http\Request;
+
+use Auth;
+
+class AdminLoginController extends Controller
+
+{
+
+    /*
+
+    |--------------------------------------------------------------------------
+
+    | Login Controller
+
+    |--------------------------------------------------------------------------
+
+    |
+
+    | This controller handles authenticating users for the application and
+
+    | redirecting them to your home screen. The controller uses a trait
+
+    | to conveniently provide its functionality to your applications.
+
+    |
+
+    */
+
+ 
+
+    use AuthenticatesUsers;
+
+ 
+
+    protected $guard = 'admin';
+
+ 
+
+    /**
+
+     * Where to redirect users after login.
+
+     *
+
+     * @var string
+
+     */
+
+    protected $redirectTo = '/admin/t';
+
+ 
+
+    /**
+
+     * Create a new controller instance.
+
+     *
+
+     * @return void
+
+     */
+
+    public function __construct()
+
+    {
+
+        $this->middleware('guest:admin')->except('logout');
+		//$this->middleware('guest:admin');
+
+    }
+
+ 
+
+    public function showLoginForm()
+
+    {
+
+        return view('admin.auth.adminLogin');
+
+    }
+
+ 
+
+    public function login(Request $request)
+    {
+        if (auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+		   // return view('admin.dashboard');
+			return redirect()->intended('/admin/dashboard');
+            //dd(auth()->guard('admin')->user());// return redirect()->intended( route('admin.dashboard') );
+        }
+        return back()->withErrors(['email' => 'Email or password are wrong.']);
+    }
+	
+	  /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+        return redirect()->intended('/admin/login');
+    }
+
+
+}
+
+**************ADMIN CONTROLLER***
+<?php
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+class AdminController extends Controller
+{
+	protected $guard = 'admin';
+    public function __construct()
+    {
+	 //  $this->middleware('guest:admin')->except('logout');
+       // $this->middleware('auth');
+    }
+    public function dashboard()
+    {
+        return view('admin.dashboard');
+    }
+}
+____________LOGIN____________
+@extends('admin.layouts.layout')
+
+@section('content')
+
+<div class="row justify-content-md-center">
+    <div class="card-wrapper login-wrap">
+      <div class="card login-card">
+        <div class="card-body">
+          <div class="row">
+          <div class="bc-lg-main">
+            <div class="col-12 col-md-12 logfrm">
+            <div class="lg-logo">
+            <img src="{{ asset('admin_assets/images/log-logo.png')}}" alt="Logo"></div>
+              <h2>Admin {{ __('Login') }}</h2>
+             
+                <form method="POST" action="{{ URL('/admin/login_res') }}">
+                    @csrf 
+   <div class="form-group row">
+
+                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+ 
+
+                            <div class="col-md-6">
+
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+
+ 
+
+                                @if ($errors->has('email'))
+
+                                    <span class="invalid-feedback">
+
+                                        <strong>{{ $errors->first('email') }}</strong>
+
+                                    </span>
+
+                                @endif
+
+                            </div>
+
+                        </div>
+
+ 
+
+                        <div class="form-group row">
+
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+ 
+
+                            <div class="col-md-6">
+
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+ 
+
+                                @if ($errors->has('password'))
+
+                                    <span class="invalid-feedback">
+
+                                        <strong>{{ $errors->first('password') }}</strong>
+
+                                    </span>
+
+                                @endif
+
+                            </div>
+
+                        </div>
+
+ 
+
+                        <div class="form-group row">
+
+                            <div class="col-md-6 offset-md-4">
+
+                                <div class="checkbox">
+
+                                    <label>
+
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+ 
+
+                        <div class="form-group row mb-0">
+
+                            <div class="col-md-8 offset-md-4">
+
+                                <button type="submit" class="btn btn-primary">
+
+                                    {{ __('Login') }}
+
+                                </button>
+
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+
+                                    {{ __('Forgot Your Password?') }}
+
+                                </a>
+
+                            </div>
+
+                        </div>
+              </form>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+_______________logout__________
+  <!-- item--> 
+            <a href="{{ route('logout') }}"   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"class="dropdown-item notify-item"> <i class="fa fa-power-off"></i> <span>Logout</span> </a> </div>
+            
+                                          
+                                      
+
+                                        <form id="logout-form" action="{{ URL('/admin/logout') }}" method="POST" style="display: none;">
+                                           @csrf 
+                                        </form>
+										
+ADMIN ROUTER:
+ 
+ // Admin routes
+Route::prefix('admin')->group(function(){
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login_res', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+    Route::get('/dashboard', 'AdminController@dashboard');//->name('admin.dashboard')
+});
+___________TABLE_________
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `rememberToken` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `rememberToken`) VALUES
+(1, 'test', 'test@gmail.com', '$2y$12$23dXhO/mj.oya6wE4yHzFO958GeA.Csgyb9th7VDstjUXCaaxd2Sy', '');
+
+password Generator :/bcrypt methods.
+
+
+   <div class="content-page"> 
+        <div class="row">
+           <div class="das-main">
+        	<div class="das-rht">
+            	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 flx">
+            <div class="card mb-3 flx-wht">
+              <div class="card-header">
+                <h3><i class="fa fa-line-chart"></i> Sales Report <span>- 2018</span></h3>
+              </div>
+              <div class="card-body">
+                <canvas id="lineChart" height="180px"></canvas>
+              </div>
+              <div class="card-footer small text-muted">Updated at 11:59 PM</div>
+            </div>
+            <!-- end card--> 
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 flx">
+            <div class="card mb-3 flx-wht">
+              <div class="card-header">
+                <h3> <i class="fa fa-group"></i> Payment Status - 2018</h3>
+              </div>
+              <div class="card-body">
+                <canvas id="pieChart" height="0px"></canvas>
+              </div>
+              <div class="card-footer small text-muted">Updated at 11:59 PM</div>
+            </div>
+            <!-- end card--> 
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 flx">
+            <div class="card mb-3 flx-wht">
+              <div class="card-header">
+                <h3> <i class="fa fa-book"></i>Top 5 Courses by Sales 2018</h3>
+              </div>
+              <div class="card-body">
+                <canvas id="doughnutChart" height="210px"></canvas>
+              </div>
+              <div class="card-footer small text-muted">Updated at 11:59 PM</div>
+            </div>
+            <!-- end card--> 
+          </div>
+            </div>
+           </div>
+        </div>
+      </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> 
+
+<script>
+		var ctx1 = document.getElementById("lineChart").getContext('2d');
+		var lineChart = new Chart(ctx1, {
+			type: 'line',
+			data: {
+				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				datasets: [{
+					label: 'Self-Sponsored $',
+					backgroundColor: '#3EB9DC',
+					data: ['71540', '111540', '85540', '101540', '91540', '71540', '101540', '101540', '71540', '131540', '91540', '91540']
+				}, {
+					label: 'Company-Sponsored $',
+					backgroundColor: '#c0e1ea',
+					data: ['91540', '122540', '91540', '111540', '51540', '91540', '101500', '71540', '81540', '81540', '81540', '65540']
+				}]
+
+			},
+			options: {
+				tooltips: {
+					mode: 'index',
+					intersect: false
+				},
+				responsive: true,
+				legend: {position: 'bottom'},
+				scales: {
+					xAxes: [{
+						stacked: true,
+					}],
+					yAxes: [{
+						stacked: true
+					}]
+				}
+			}
+		});
+
+		var ctx2 = document.getElementById("pieChart").getContext('2d');
+		var pieChart = new Chart(ctx2, {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [1525783, 1095322, 635443],
+					backgroundColor: [
+						'rgba(75, 192, 192, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)'
+						
+					],
+					label: 'Dataset 1'
+				}],
+				labels: [
+					"Paid $",
+					"Unpaid $",
+					"Overdue $",
+					
+				]
+			},
+			options: {
+				responsive: true,
+				legend: {display: false}
+
+			},
+			
+
+		});
+
+
+		var ctx3 = document.getElementById("doughnutChart").getContext('2d');
+		var doughnutChart = new Chart(ctx3, {
+			type: 'doughnut',
+			data: {
+				datasets: [{
+					data: [125783, 105783, 275783],
+					//data: [125783, 105783, 325783],
+					backgroundColor: [
+						'rgba(255,99,132,1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+					label: 'Dataset 1'
+				}],
+				
+				labels: [
+					"bizSAFE $",
+					"WSQ Tourism $",
+					"WSQ Security $",
+					"Workplace Safety $",
+					"F&B Service $"
+				]
+			},
+			options: {
+				maintainAspectRatio : false,
+				responsive: true,
+				legend: {display: false}
+			}
+
+		});
+	</script> 
+
+</body>
+</html>
