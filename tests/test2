@@ -1,0 +1,965 @@
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+            function contact_usshow() {
+                $('#myModal_contact').modal('show');
+                $('#myModal_register').modal('hide');
+                $('#myModal_login').modal('hide');
+                $('#forgotModal_mail').modal('hide');
+            }
+            function register_show() {
+                $("#register_form")[0].reset();
+                $('#myModal_register').modal('show');
+                $('#myModal_login').modal('hide');
+                $('#myModal_contact').modal('hide');
+                $('#forgotModal_mail').modal('hide');
+            }
+            function login_show() {
+                $("#login_form")[0].reset();
+                $('#myModal_login').modal('show');
+                $('#myModal_register').modal('hide');
+                $('#myModal_contact').modal('hide');
+                $('#forgotModal_mail').modal('hide');
+            }
+            function forgot_show() {
+                $("#forgot_form")[0].reset();
+                $('#forgotModal_mail').modal('show');
+                $('#myModal_login').modal('hide');
+                $('#myModal_register').modal('hide');
+                $('#myModal_contact').modal('hide');
+            }
+        </script>
+        <script src="test/js/jquery-3.2.1.slim.min.js" integrity="s"     crossorigin="anonymous"></script> <!--new-->
+<script src="test/js/jquery.min.js"></script>
+
+<script  defer src="test/js/popper.min.js
+" integrity="s"
+  crossorigin="anonymous"></script> <!--new-->
+
+<script defer src="test/js/bootstrap.min.js"></script>
+
+<script defer src="test/js/jquery-ui.js"></script>
+<script defer src="test/js/owl.carousel.js"></script>
+<script  src="https://www.test.com/public/admin_assets/js/jquery.validate.min.js"> </script>
+<script defer src="test/js/notifIt.min.js"></script>
+<script>
+  $( document ).ready(function() {
+   
+      });
+  jQuery.validator.addMethod("validEmail", function(value, element) {
+    return this.optional( element ) || /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test( value );
+  }, 'Please enter a valid email address.');
+  jQuery.validator.addMethod("lettersonly", function(value, element) {
+      return this.optional(element) || /^[a-zA-Z\s]+$/i.test(value);
+    }, "Please enter only letters.");
+  jQuery.validator.addMethod("notEqual", function(value, element, param) {
+    var notEqual = true; value = $.trim(value);
+    for (i = 0; i < param.length; i++) {
+        if (value == $.trim($(param[i]).val())) { notEqual = false; }
+    }
+    return this.optional(element) || notEqual;
+  }, "Please enter a different value.");
+  jQuery.validator.addMethod("extension",function(a,b,c){return c="string"==typeof c?c.replace(/,/g,"|"):"png|jpeg|jpg",this.optional(b)||a.match(new RegExp("\\.("+c+")$","i"))},"Please enter a value with a valid extension.");
+  jQuery.validator.addMethod("alphanumeric", function(value, element) {
+        return this.optional(element) || /^\w+$/i.test(value);
+    }, "Please enter valid username.");
+  jQuery.validator.addMethod("test", function(value, element) {
+        return this.optional(element) || /^\d{0,50}(\.\d{0,2})?$/i.test(value);
+    }, "Only 2 decimals allowed after decimal point.");
+  jQuery.validator.addMethod("test", function(value, element) {
+        return this.optional(element) || /^\d{0,50}(\.\d{0,8})?$/i.test(value);
+    }, "Only 8 decimals allowed after decimal point.");
+
+  $(document).ready(function () {
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      autoplay: true,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: true,
+      responsiveClass: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: true
+        },
+        600: {
+          items: 3,
+          nav: true
+        },
+        1000: {
+          items: 4,
+          nav: true,
+          loop: true,
+          margin: 20,
+        }
+      }
+    })
+  })
+</script>
+<script  src="test/js/wow.min.js"></script>
+<script>
+  wow = new WOW({
+    boxClass: 'wow', // default
+    animateClass: 'animated', // default
+    offset: 0, // default
+    mobile: true, // default
+    live: true // default
+  })
+  wow.init();
+</script>
+
+<script>
+  function correctCaptcha() {
+    $('#hiddenRecaptcha').valid();
+  }
+  setTimeout(function () {
+    document.getElementById("myLoad").style.display = "none";
+  }, 2000);
+
+
+</script>
+<script>
+  $(document).ready(function () {
+
+    //Click event to scroll to top
+    $('.scrollToTop').click(function () {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 800);
+      return false;
+    });
+
+    $(function () {
+      $(document).scroll(function () {
+        var $nav = $(".fixed-top");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+      });
+    });
+
+  });
+
+  $('#subscribeusers_form').validate({
+  ignore:"",
+  rules:{
+    subscribemail:{
+          required:true,
+          validEmail:true,
+          remote:{
+            url: "checkNewsEmailExists",
+            type: 'POST',
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            data: {
+              subscribemail: function() {
+                return $('#subscribeusers #subscribemail').val();
+              }
+            }
+          }
+        },
+
+
+  },
+  messages:{
+    subscribemail:{
+      required:"Enter email address",
+      validEmail:"Enter valid email address",
+      remote:"Email address already exists"
+    },
+  }
+});
+
+$('#newsletter_form').validate({
+  ignore:"",
+  rules:{
+    useremail:{
+      required:true,
+      validEmail:true
+    },
+  },
+  messages:{
+    useremail:{
+      required:"Enter email address",
+      email:"Enter valid email address"
+    }
+  },
+  submitHandler:function() {
+    $.ajax({
+      url : "subscribeNewsLetter",
+      data : $('#newsletter_form').serialize(),
+      method : "POST",
+      success : function(data) {
+        if($.trim(data) == "success") {
+          notif({ msg: '<i class="fa fa-check-circle" aria-hidden="true"></i> <span style="font-weight:bold; font-size: 15px;">Newsletter subscribed successfully</span>', type: "success" });
+          $('#newsletter_form').trigger('reset');
+        } else {
+          notif({ msg: '<i class="fa fa-exclamation-circle" aria-hidden="true"></i>'+" "+data, type: "error" });
+        }
+        $('#newsletter_form').trigger('reset');
+      },
+      error : function() {
+        notif({ msg: '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> <span style="font-weight:bold; font-size: 15px;">Error! Please try again</span>', type: "error" });
+        $('#newsletter_form').trigger('reset');
+      }
+    });
+  }
+});
+
+$('.transLink').on('click', function () {
+  $(this).find('i').toggleClass('chevIc chevIcDown')
+});
+var base_url="https://www.test.com/logout_expired";
+
+$(document).ready(function() {
+   var userId = "";
+   if(userId != "") {
+     (function(seconds) {
+       var refresh,
+         intvrefresh = function() {
+           clearInterval(refresh);
+           refresh = setTimeout(function() {
+              location.href =base_url;
+           }, seconds * 60000);
+         };
+     $(document).on('keypress click mousemove', function() { intvrefresh() });
+     intvrefresh();
+     }(35));
+   }
+
+   window.onbeforeunload = function () {
+     location.href = "https://www.test.com/logout";
+   };
+
+ });
+</script>
+<script defer src="test/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<link href="test/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+<script>
+  (function ($) {
+    $(window).on("load", function () {
+      $(".notifyScroll").mCustomScrollbar({
+          scrollButtons: {
+            enable: false
+          },
+          scrollbarPosition: 'inside',
+          autoExpandScrollbar: true,
+          theme: 'minimal-dark',
+          axis: "y",
+          setWidth: "auto"
+        });
+    });
+  })(jQuery);
+</script>
+<script defer src="test/js/jquery.scrollbox.min.js"></script>
+<script>
+$(function () {
+  $('#demo4').scrollbox({
+    direction: 'h',
+    //switchItems: 5,
+    //distance: 670,
+	  linear: true,
+    step: 2,
+    delay: 0,
+    speed: 30
+  });
+});
+</script>
+
+
+<script defer src="test/js/jquery.dataTables.min.js"></script>
+<script defer src="test/js/dataTables.buttons.min.js"></script>
+<script  defer src="test/js/jszip.min.js"></script>
+<script defer src="test/js/vfs_fonts.js"></script>
+<script  defer src="test/js/buttons.html5.min.js"></script><!--new-->
+
+
+<script>
+  $(document).ready(function () {
+    $('.dataTbl').DataTable({
+      "ordering": false
+    });
+
+  $(window).resize(function(){
+    var captchaScale=$('.regSec').width()/340;
+    if(340>parseInt($('.regSec').width())) {
+      $('.g-recaptcha').css({
+        'transform':'scale('+captchaScale+')'
+      });
+    }
+  });
+  var captchaScale=$('.regSec').width()/340;
+    if(340>parseInt($('.regSec').width())) {
+      $('.g-recaptcha').css({
+        'transform':'scale('+captchaScale+')'
+      });
+    }
+  });
+
+
+function copyTextToClipboard(text) {
+   var textArea = document.createElement( "textarea" );
+   textArea.value = text;
+   document.body.appendChild( textArea );
+   textArea.select();
+   try {
+      document.execCommand( 'copy' );
+   } catch (err) {
+      console.log('Oops, unable to copy');
+   }
+   document.body.removeChild( textArea );
+}
+
+function copy_address(v) {
+  var clipboardText = "";
+  clipboardText = $('#'+v).val();
+  copyTextToClipboard( clipboardText );
+  notif({ msg: '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Copied to the clipboard', type: "success" });
+}
+
+
+function language_showing(val){  location.href="https://www.test.com/localization/"+val;}//This is old part langauage 28.5.2018 without model method
+
+  function setlang(lan) {
+    $.ajax({
+     url:"setlanguage",
+      type:"POST",
+      data: { "_token": "SAPzes5Oi2zDqtKBjvVELBYe89X2e3WBFxr1bgPM", "lan": lan },
+      success:function(msg) {
+        window.location.href="https://www.test.com/";
+      }
+   });
+  }
+</script>
+<script>
+
+var base_urlcss="test/css";
+$(document).ready(function(){
+	$('.mode_switch').click(function(){
+		$('.mode').toggle();
+		($('.mode:visible').attr('class'));
+      if(($('.mode:visible').attr('class')) == 'nav-link dark mode')
+        $("#mode_display").val("dark");
+      else if(($('.mode:visible').attr('class')) == 'nav-link light mode')
+       $("#mode_display").val("light");
+      else
+        $("#mode_display").val("light");
+       console.log($("#mode_display").val());
+      localStorage.setItem("lightdark_mode_display", $("#mode_display").val());
+
+		$('#lightMode').attr('href',base_urlcss+'/'+$('.mode:visible').attr('class').split(' ')[1]+'.css')
+	})
+})
+
+var display_val=localStorage.getItem("lightdark_mode_display");
+console.log("test"+display_val);
+var res=$("#mode_display").val(display_val);
+$('#lightMode').attr('href',base_urlcss+'/'+localStorage.getItem("lightdark_mode_display")+'.css')
+</script>
+<script>
+    jQuery.validator.addMethod("begiendspace", function(value, element) { return (value.trim() != "" && value.charAt(0) != " " && value.charAt(value.length - 1) != " "); 
+  },"Enter valid input! Avoid space(s) in the beginning and end!!");
+
+
+  $('#tfa_form').validate({ 
+    ignore:"",
+    rules:{
+      auth_key:{
+        required:true,
+       number:true,
+       minlength:6,
+       maxlength:6,
+       begiendspace:true,
+      },
+    
+    },
+    messages:{
+      auth_key:{
+        required:"Enter 2FA 6 Digit Code",
+        number:"Enter Only Number",
+        remote:"Email not exists",
+        minlength:"Enter 6 Digit Code Only",
+        maxlength:"Enter 6 Digit Code Only",
+
+      },     
+    }
+  });
+
+
+
+
+
+</script>
+
+<script>
+
+jQuery.validator.addMethod("foo", function(value, element) {
+    return this.optional(element) || /^(.*[A-Z].*)/.test(value);
+}, "Password should contain atleast 1 uppercase");
+
+jQuery.validator.addMethod("bar", function(value, element) {
+    return this.optional(element) || /^(.*[a-z].*)/.test(value);
+}, "Password should contain atleast 1 lowercase");
+
+jQuery.validator.addMethod("specialchars", function(value, element) {
+    return this.optional(element) || /^(?=.*[!@#$%&*()_+}])/.test(value);
+}, "Password should contain atleast 1 special character");
+
+jQuery.validator.addMethod("onenumeric", function(value, element) {
+    return this.optional(element) || /^(?=.*\d)/.test(value);
+}, "Password should contain atleast 1 numberic");
+
+jQuery.validator.addMethod("nospace", function(value, element) {
+    return value.indexOf(" ") < 0 && value != "";
+}, "Password should not contain space");
+
+$('#pwd_form').validate({ 
+  rules:{
+    current_pwd:{
+      required:true,
+      remote: {
+        url: "checkPassword",
+        type: 'POST',
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        data: {
+          current_pwd: function() {
+              return $('#pwd_form #current_pwd').val();
+          }
+        }
+      }
+    },
+    new_pwd:{
+      required:true,
+      minlength:8,
+      foo: true,
+      specialchars: true,
+      onenumeric: true,
+      bar: true,
+      nospace: true,
+      notEqual: ['#current_pwd']
+    },
+    confirm_pwd:{
+      required:true,
+      equalTo : '[name="new_pwd"]',
+    }
+  },
+  messages:{
+    current_pwd:{
+      required:"Enter Current Password",
+      remote:"Enter correct Current Password",
+    },
+    new_pwd:{
+      required:"Enter new password",
+      minlength:"Enter atleast 8 characters",
+      notEqual: "New password should not be same."
+    },
+    confirm_pwd:{
+      required:"Retype password",
+      equalTo :"Enter the same password"
+    }
+  }
+});
+
+function pwd_loader_show() { 
+  if($('#pwd_form').valid() == true) {
+    $('#pwd_submit').hide();
+    $('#pwd_loader').show();
+  } else {
+    $('#pwd_submit').show();
+    $('#pwd_loader').hide();
+  }
+}
+</script><script>
+  $('#forgot_form').validate({
+    ignore:"",
+    rules:{
+      useremail:{
+        required:true,
+        validEmail:true,
+        remote:{
+          url: "checkForgotEmailExists",
+          type: 'POST',
+          headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+          data: {
+            email: function() {
+              return $('#forgot_form #forgot_email').val();
+            }
+          }
+        }
+      },
+    },
+    messages:{
+      useremail:{
+        required:"Enter email address",
+        validEmail:"Enter valid email address",
+        remote:"Email address does not exist"
+      },
+    },
+    submitHandler:function() {
+      $.ajax({
+        url : "sendForgotEmail",
+        data : $('#forgot_form').serialize(),
+        method : "POST",
+        success : function(data) {
+          grecaptcha.reset(html_element_2_id);
+          $('#forgot_form').trigger('reset');
+          data = $.parseJSON(data);
+          if(data.status == 1) {
+            notif({ msg: '<i class="fa fa-check-circle" aria-hidden="true">'+" "+data.msg, type: "success" });
+          } else {
+            notif({ msg: '<i class="fa fa-exclamation-circle" aria-hidden="true"></i>'+" "+data.msg, type: "error" });
+          }
+          $('#forgot_loader').hide();
+          $('#forgot_submit').show();
+          $('#forgotModal').dialog('close');
+        },
+        error : function() {
+          notif({ msg: '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> <span style="font-weight:bold; font-size: 15px;">Please try again</span>', type: "error" });
+          $('#forgot_loader').hide();
+          $('#forgot_submit').show();
+          $('#forgotModal').dialog('close');
+        }
+      });
+    }
+  });
+
+  function forgot_loader_show() {
+    if($('#forgot_form').valid() == true) {
+      $('#forgot_submit').hide();
+      $('#forgot_loader').show();
+    } else {
+      $('#forgot_submit').show();
+      $('#forgot_loader').hide();
+    }
+  }
+</script>
+
+
+
+<!-- <script type="text/javascript"> _linkedin_partner_id = "500394"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id); </script><script type="text/javascript"> (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})(); </script> <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=500394&fmt=gif" /> </noscript> -->
+
+<!-- <script language="JavaScript" type="text/javascript">
+TrustLogo("https://www.test.com/public/sectigo_trust_seal_md_106x42.png", "SC5", "none");
+</script> -->
+</body>
+</html>        <script type="text/javascript">
+jQuery.validator.addMethod("foo", function(value, element) {
+    return this.optional(element) || /^(.*[A-Z].*)/.test(value);
+}, "Password should contain atleast 1 uppercase");
+
+jQuery.validator.addMethod("bar", function(value, element) {
+    return this.optional(element) || /^(.*[a-z].*)/.test(value);
+}, "Password should contain atleast 1 lowercase");
+
+jQuery.validator.addMethod("specialchars", function(value, element) {
+    return this.optional(element) || /^(?=.*[!@#$%&*()_+}])/.test(value);
+}, "Password should contain atleast 1 special character");
+
+
+jQuery.validator.addMethod("onenumeric", function(value, element) {
+    return this.optional(element) || /^(?=.*\d)/.test(value);
+}, "Password should contain atleast 1 numeric");
+
+jQuery.validator.addMethod("nospace", function(value, element) {
+    return value.indexOf(" ") < 0 && value != "";
+}, "Password should not contain space");
+
+
+jQuery.validator.addMethod("nospacelatter", function(value, element) {
+    return value.indexOf(" ") < 0 && value != "";
+}, "Username should not contain space");
+
+jQuery.extend(jQuery.validator.methods, {
+       first_name: function(value, element) {
+       return this.optional(element)
+        || /^-?(?:\d+|\d{1,3}(?:\.\d{3})+)(?:,\d+)?$/.test(value)
+       }
+});
+
+jQuery.validator.addMethod("someRule", function(string, element) {
+    return !string.match(/\./g);
+}, "Your username contains a dot!");
+
+jQuery.validator.addMethod("new", function(value, element) {
+    return this.optional(element) || /^(0-9a-zA-Z\.)/.test(value);
+}, " new");
+
+jQuery.validator.addMethod("dot_allowed", function(value, element) { return this.optional(element) || /^[a-zA-Z0-9\.]+$/i.test(value); }, "Allow letters , numbers and dots(.) only ");
+
+$.validator.addMethod("pwcheck", function (value) {    return /[\@#\$\%\^\&*()_+!]/.test(value) && /[a-z]/.test(value) && /[0-9]/.test(value) && /[A-Z]/.test(value)
+},"Password must contain:<BR>Password must be between 8 and 20 characters<BR>1 Uppercase and Lowercase Letter<BR>1 Number<BR>1 Special character");
+//0-9a-zA-Z\.
+$('#register_form').validate({
+	ignore:"",
+	rules:{
+
+		pwd: {
+			required:true,
+			minlength:8,
+			maxlength:20,
+			pwcheck:true	//Client Comments 31.8.2018
+			/*foo: true,
+			specialchars: true,
+			onenumeric: true,
+			bar: true,
+			minlength:8,
+			nospace: true,*/
+		},
+		confirm_pwd: {
+			required:true,
+			equalTo :'[name="pwd"]',
+		},
+
+		email:{
+	        required:true,
+	        validEmail:true,
+	        remote:{
+	          url: "checkEmailExists",
+	          type: 'POST',
+	          headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+	          data: {
+	            email: function() {
+	              return $('#register_form #current_email').val();
+	            }
+	          }
+	        }
+      	},
+      	hiddenRecaptcha: {
+            required: function () {
+                if (grecaptcha.getResponse() == '') {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
+		agree:{
+        	required:true,
+      	},
+	},
+	messages:{
+
+		pwd: {
+			required:"Enter password",
+			minlength:"Enter atleast 8 characters",
+			maxlength:"Enter atleast 20 characters"
+		},
+		confirm_pwd: {
+			required : "Enter confirm password",
+			equalTo : "Passwords do not match"//"Enter the same password" 31.8.2018 Client Comments
+		},
+		email:{
+			required:"Enter email address",
+			validEmail:"Enter valid email address",
+			remote:"Email address already exists"
+		},
+		hiddenRecaptcha: {
+	  		required: "Please complete captcha"
+	  	},
+	  	agree:{
+        	required:"Please accept our terms and conditions",//"Agree our terms and conditions",//31.8.2018 Client Comments
+      	},
+	},
+/*/TINP 27.12.2018 MAIL FUNCTIONALITY RESTRICT START*/
+submitHandler:function() {
+     var url = "https://www.test.com/signup";
+      $.ajax({
+        url:url,
+        method:"POST",
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        data:$('#register_form').serialize(),
+        beforeSend:function(){
+          $('#signup_submit').hide();
+          $('#signup_loader').show();
+        },
+        success:function(data,status,xhr) {
+           $('#register_form')[0].reset();
+           $('#myModal_register').modal('hide');
+           $('#signup_submit').show();          $('#signup_loader').hide();
+
+
+          data = $.parseJSON(data);
+          if(data.status == "1") {
+			notif({ msg: '<i class="fa fa-check-circle" aria-hidden="true"></i>'+" "+data.msg, type: "success" });
+//var result="Registration Successful. Activation link has been sent to registered email address.";
+$.ajax({ //userid
+url:"https://www.test.com/registerEmailReceive",
+method:"POST",
+headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+ data:{ user_id:data.userid,email_id:data.emailid },
+success:function(data,status,xhr) {
+//notif({ msg: '<i class="fa fa-check-circle" aria-hidden="true"></i>'+" "+result, type: "success" });
+          //$('#signup_submit').show();          $('#signup_loader').hide();
+	window.location.href = "https://www.test.com";
+},
+ error:function() {
+ 	//notif({ msg: '<i class="fa fa-check-circle" aria-hidden="true"></i>'+" "+result, type: "success" });
+         // $('#signup_submit').show();          $('#signup_loader').hide();
+ window.location.href = "https://www.test.com";
+ 		}
+})
+			// window.location.href = "https://www.test.com";
+			/*$('#signup_submit').show();			$('#signup_loader').hide();*/
+                      } else {
+            notif({ msg: '<i class="fa fa-check-circle" aria-hidden="true"></i>'+" "+data.msg, type: "error" });
+           window.location.href = "https://www.test.com";
+          }
+        },
+        error:function() {
+         notif({ msg: '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> <span style="font-weight:bold; font-size: 15px;">Please Register Latter!</span>', type: "error" });
+          			 window.location.href = "https://www.test.com";
+        }
+      })
+   }
+ /*/TINP 27.12.2018 MAIL FUNCTIONALITY RESTRICT START*/
+});
+
+function signup_loader_show() {
+    if($('#register_form').valid() == true) {
+      $('#signup_submit').hide();
+      $('#signup_loader').show();
+    } else {
+      $('#signup_loader').hide();
+	  $('#signup_submit').show();
+    }
+  }
+</script>
+<script defer src="https://www.google.com/recaptcha/api.js"></script> <script>
+
+  $('#login_form').validate({
+    ignore:"",
+    rules:{
+      email:{
+        required:true,
+        validEmail:true
+      },
+      password:{
+        required:true,
+/*        remote:{
+url:"https://www.test.com/checkEmailwithdpasswordExists",
+method:"POST",
+headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+data: {'test_email':$("#test_email").val(),'test_password':$("#test_password").val()},
+success: function(res) {  alert(res);
+//return $('#login_form #test_password').val();
+}
+        }*/
+      },
+      hiddenRecaptcha: {
+        required: function () {
+          if (grecaptcha.getResponse() == '') {
+              return true;
+          } else {
+              return false;
+          }
+        }
+      },
+    },
+    messages:{
+      email:{
+        required:"Enter email address",
+        validEmail:"Enter valid email address",
+        remote:"Email not exists"
+      },
+      password:{
+        required:"Enter password",
+        //remote:"Wrong Password"
+      },
+      hiddenRecaptcha: {
+        required: "Please complete captcha"
+      },
+    }
+  });
+
+/*        url: "checkEmailExists",
+            type: 'POST',
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            data: {
+              email: function() {
+                return $('#register_form #current_email').val();
+              }
+            }
+
+                $.ajax({
+      url:"https://www.test.com/checkStopOrder",
+      method:"POST",
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      data: {'pair':pair},
+      success: function(res) {
+        get_pair_info1('none');
+      }
+    })*/
+  function login_loader_show() {
+    var response = grecaptcha.getResponse(html_element_id);
+    if($('#login_form').valid() == true) {
+      if(response.length != 0) {
+      $('#login_submit').hide();
+      $('#login_loader').show();
+      }
+    } else {
+      $('#login_loader').hide();
+      $('#login_submit').show();
+    }
+  }
+
+
+
+</script>
+
+
+
+<script defer data-cfasync="false" src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
+<script>
+var html_element_id, html_element_2_id;
+var onloadCallback = function() {
+html_element_id = grecaptcha.render('html_element', {
+'sitekey' : 'a'
+});
+html_element_2_id = grecaptcha.render('html_element_2', {
+'sitekey' : 'a'
+});
+};
+  
+
+
+    $("#login_form").submit(function(){
+ var response = grecaptcha.getResponse(html_element_id);
+            if(response.length == 0) {
+        $(".reg_recaptcha_error").html('This field is required.');
+        $(".reg_recaptcha_error").show();
+        return false;
+    } else {
+        $(".reg_recaptcha_error").hide();
+        $(".reg_recaptcha_error").html('');
+        return true;
+    }
+});
+
+        $("#forgot_form").submit(function(){
+ var response = grecaptcha.getResponse(html_element_2_id);
+            if(response.length == 0) {
+        $(".forgot_recaptcha_error").html('This field is required.');
+        $(".forgot_recaptcha_error").show();
+        return false;
+    } else {
+        $(".forgot_recaptcha_error").hide();
+        $(".forgot_recaptcha_error").html('');
+        return true;
+    }
+});
+
+        function correctCaptchas() { var v = grecaptcha.getResponse(html_element_id); if(v.length == 0) { $("#register_recaptcha_error").html("You can't leave Captcha Code empty"); } else { $("#register_recaptcha_error").html(''); } }
+        function corrects() { var v = grecaptcha.getResponse(html_element_2_id); if(v.length == 0) { $("#forgot_recaptcha_error").html("You can't leave Captcha Code empty"); } else { $("#forgot_recaptcha_error").html(''); } }
+</script>        <script>
+  $('#contact_form').validate({
+    // ignore:"",
+    rules:{
+      username:{
+        required:true,
+        lettersonly:true
+      },
+      useremail:{
+        required:true,
+        validEmail:true
+      },
+      subject:{
+        required:true,
+      },
+      mobile_number:{
+         required:true,
+      number:true,
+      minlength : 10
+      },
+      message:{
+        required:true,
+      }
+    },
+    messages:{
+       username:{
+        required:"Enter full name"
+      },
+      useremail:{
+        required:"Enter Email",
+        validEmail:"Enter valid email address"
+      },
+      mobile_number:{
+      required:"Enter mobile number",
+      number:"Enter valid mobile number",
+      minlength:"Please enter atleast 10 digits"
+    },
+      subject:{
+        required:"Enter subject",
+      },
+      message:{
+        required:"Enter message.",
+      }
+    }
+  });
+
+  function contact_loader_show() {
+    if($('#contact_form').valid() == true) {
+      $('#contact_submit').hide();
+      $('#contact_loader').show();
+    }
+  }
+</script>        <script>
+  $('#forgot_form').validate({
+    ignore:"",
+    rules:{
+      useremail:{
+        required:true,
+        validEmail:true,
+        remote:{
+          url: "checkForgotEmailExists",
+          type: 'POST',
+          headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+          data: {
+            email: function() {
+              return $('#forgot_form #forgot_email').val();
+            }
+          }
+        }
+      },
+    },
+    messages:{
+      useremail:{
+        required:"Enter email address",
+        validEmail:"Enter valid email address",
+        remote:"Email address does not exist"
+      },
+    },
+    submitHandler:function() {
+      $.ajax({
+        url : "sendForgotEmail",
+        data : $('#forgot_form').serialize(),
+        method : "POST",
+        success : function(data) {
+          grecaptcha.reset(html_element_2_id);
+          $('#forgot_form').trigger('reset');
+          data = $.parseJSON(data);
+          if(data.status == 1) {
+            notif({ msg: '<i class="fa fa-check-circle" aria-hidden="true">'+" "+data.msg, type: "success" });
+          } else {
+            notif({ msg: '<i class="fa fa-exclamation-circle" aria-hidden="true"></i>'+" "+data.msg, type: "error" });
+          }
+          $('#forgot_loader').hide();
+          $('#forgot_submit').show();
+          $('#forgotModal').dialog('close');
+        },
+        error : function() {
+          notif({ msg: '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> <span style="font-weight:bold; font-size: 15px;">Please try again</span>', type: "error" });
+          $('#forgot_loader').hide();
+          $('#forgot_submit').show();
+          $('#forgotModal').dialog('close');
+        }
+      });
+    }
+  });
+
+  function forgot_loader_show() {
+    if($('#forgot_form').valid() == true) {
+      $('#forgot_submit').hide();
+      $('#forgot_loader').show();
+    } else {
+      $('#forgot_submit').show();
+      $('#forgot_loader').hide();
+    }
+  }
+</script>
