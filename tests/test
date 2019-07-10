@@ -1,0 +1,340 @@
+
+
+This one showing the cryptocurrency marketprice using "Coinmarketcap" Api.
+
+Its based on difficult for curl:json_decode($resp_orders,true);
+ 
+Coinmarketcap:
+	https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview
+	https://pro.coinmarketcap.com/account
+	https://sandbox.coinmarketcap.com/account
+	
+	
+BITCOIN INSTALL:
+step1:DOWNLOAD		:https://bitcoin.org/en/download
+step2:INSTALL		:https://www.youtube.com/watch?v=8iqbNK5thZE
+https://en.bitcoin.it/wiki/Help:Installing_Bitcoin_Core
+step3:privatekey	:https://www.youtube.com/watch?v=OX71C9DP3NE
+step4:Methods		 :https://laanwj.github.io/bitcoin-python/doc/bitcoinrpc.connection.html
+https://metacpan.org/pod/distribution/Bitcoin-RPC-Client/lib/Bitcoin/RPC/Client.pm
+Step6:Easybitcoin	https://github.com/aceat64/EasyBitcoin-PHP
+step7:JSON-RPC 		https://github.com/thinkphp/json-rpc-php
+
+
+Database:
+MYSQL:
+Windows:
+        xampp control panel :https://www.youtube.com/watch?v=VTRxqkOmn34
+							  1.mysql - config -> Change to Port Part
+		                      2.mysql - mysql_error_log File 
+							  3.common config ->change to port part
+							  
+							  
+LARAVEL 5.7 WITH Window 7 INSTALL:
+step:1
+	https://www.youtube.com/watch?v=7YezCyBbqI0
+	https://github.com/laravel-shift/laravel-5.7
+	D:\XAMPP\htdocs\meena\bitcoin>https://github.com/laravel-shift/laravel-5.7  (1.shift+ rightclick - Terminal Open it 2.Terminal mark is copy the content)	
+
+	
+LARAVEL 5.8 WITH Window 7 INSTALL:
+
+Step:1  Install
+        https://laravel.com/docs/5.8
+		PHP >= 7.1.3
+		D:\XAMPP\htdocs\\bitcoin>composer global require laravel/installer (Globally Install)
+		D:\XAMPP\htdocs\\bitcoin>composer create-project --prefer-dist laravel/laravel <projectname>
+
+Step:2  Setup:
+		File Permission 777 storage
+		File Permission 777 bootstrap
+		File Permission Ventor bootstrap
+		
+		
+
+Step:3	Configuration changes in .env file
+		After successfully installed the laravel application, in the next step is  configuration .evn file. Let’s open .env file and setup database credential like database name , database user name , databasse password and host.
+        Otherwise Using config/database.php . Its is security of site.
+
+Step:4  Generate Laravel Application Key
+		Configuration compeleted successfully of .evn file , Let’s open the command prompt and generate laravel application key using this given below command.
+		D:\XAMPP\htdocs\bitcoin>php artisan key:generate
+		Application key set successfully.
+		
+Step:5  Now run the created project
+		In this step to use the php artisan serve command .it will start your server locally
+		D:\XAMPP\htdocs\\bitcoin>php artisan serve
+		If you want to run the project diffrent port so use this command
+		D:\XAMPP\htdocs\\bitcoin>php artisan serve --port=8080 
+
+Step:6
+		laravel authentication is successfully completed, Now Go to the browser and hit the
+		URL : http://localhost:8000/bitcoin/public OR http://127.0.0.1:8000//bitcoin/public
+		If you not run php artisan server command , direct go to your browser and type the url
+		URL : http://localhost/bitcoin/public/
+		
+Step:7	Laravel - Remove Public from URL using htaccess
+         1.bitcoin/server.php Rename to index.php
+		 2.Copy the .htaccess file bitcoin/public/ folder & past the bitcoin/ folder
+		 3.Theme Issue solved to change the asset path url in 
+		       D:\XAMPP\htdocs\meena\blockchain\resources\views\layouts\app.blade.php
+		       <script src="{{ asset('js/app.js') }}" defer></script>
+			    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+				Change TO:
+				   <script src="{{ url('/public/js/app.js') }}" defer></script>
+			    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+				 <link href="{{  url('/public/css/app.css') }}" rel="stylesheet">
+Step:8  index.php remove from url
+		Create .htaccess file inside the root of project folder.
+		code is:
+			<IfModule mod_rewrite.c>
+			 RewriteEngine On
+			 RewriteRule ^ index.php [L]
+			</IfModule>
+			
+Step:9  You can get the base url of the Laravel application by:
+		echo url('/'); or {{ url('/') }}
+	
+Step:10 Form URL:
+          <form method="POST" action="{{ route('register') }}">
+		  
+Step:11 Migration:		
+		  D:\XAMPP\htdocs\meena\blockchain>php artisan make:migration create_users_table
+		  Created Migration: 2019_06_19_113439_create_<tablename>_table
+
+Step:12 Model		  
+		D:\XAMPP\htdocs\meena\blockchain>php artisan make:model test
+		Model created successfully.
+	
+Step:13 Database
+        .env 
+		    DB_CONNECTION=mysql
+			DB_HOST=127.0.0.1
+			DB_PORT=3306
+			DB_DATABASE=blockchain
+			DB_USERNAME=root
+			DB_PASSWORD=
+		Error:Invalid catalog name: 1046 No database selected  (.env above changes do it.)
+		
+Step14:Helper
+      1.https://laravel-news.com/creating-helpers
+	  
+	  2.D:\XAMPP\htdocs\meena\blockchain\app\Helpers\Helpers.php
+	  <?php
+		function test()
+		{
+			echo "testing";
+		}
+		?>
+		
+	 3.D:\XAMPP\htdocs\meena\blockchain\composer.json
+	  "autoload": {
+	 "files": [
+        "app/helpers/helpers.php"
+    ],
+	
+	4.D:\XAMPP\htdocs\meena\blockchain>composer dump-autoload
+	Generating optimized autoload files> Illuminate\Foundation\ComposerScripts::post
+	AutoloadDump
+	> @php artisan package:discover --ansi
+	Discovered Package: ←[32mbeyondcode/laravel-dump-server←[39m
+	Discovered Package: ←[32mfideloper/proxy←[39m
+	Discovered Package: ←[32mlaravel/tinker←[39m
+	Discovered Package: ←[32mnesbot/carbon←[39m
+	Discovered Package: ←[32mnunomaduro/collision←[39m
+	←[32mPackage manifest generated successfully.←[39m
+	Generated optimized autoload files containing 3623 classes
+
+	5.D:\XAMPP\htdocs\meena\blockchain\app\Http\Controllers\Auth\RegisterController.php
+	  use App\Helpers\Helpers;	
+      echo test();
+	  
+step:15 Encryption/Decryption
+        https://gist.github.com/joashp/a1ae9cb30fa533f4ad94
+		function encrypt_decrypt($action, $string) {
+		$output = false;
+		$encrypt_method = "AES-256-CBC";
+		$secret_key = 'This is my secret key';
+		$secret_iv = 'This is my secret iv';
+		// hash
+		$key = hash('sha256', $secret_key);
+		
+		// iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+		$iv = substr(hash('sha256', $secret_iv), 0, 16);
+		if ( $action == 'encrypt' ) {
+			$output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
+			$output = base64_encode($output);
+		} else if( $action == 'decrypt' ) {
+			$output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+		}
+		return $output;
+		}
+
+step:16 AUTU CODE CUMISZATION:
+		https://laravel.com/docs/5.8/authentication
+	
+step:17 .env change mysql to sqlserver 
+      MYSQL:
+        DB_CONNECTION=mysql
+		DB_HOST=127.0.0.1
+		DB_PORT=3306
+		DB_DATABASE=blockchain
+		DB_USERNAME=root
+		DB_PASSWORD=
+		
+	  SQLSRV:
+	    DB_CONNECTION=sqlsrv
+		DB_HOST=127.0.0.1
+		DB_PORT=1433
+		DB_DATABASE=blockchain
+		DB_USERNAME=sa
+		DB_PASSWORD=xsotech123	
+
+   
+LaraveL:
+
+step:model
+	<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Currency extends Model
+{
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'currency';
+
+    /**
+    * The database primary key value.
+    *
+    * @var string
+    */
+    protected $primaryKey = 'id';
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name,symbol,type,image,class'];   
+}
+
+
+step:application name
+		 <title>{{ config('app.name', 'BlockChain') }}</title>
+		 .env file change to app_name=''
+		 
+step: auth functionality 
+      https://slick.pl/kb/laravel/overriding-login-and-registration-functionality-in-laravel-5/
+			
+CORE CHANGES:
+
+Step:1
+D:\XAMPP\htdocs\meena\blockchain\vendor\laravel\framework\src\Illuminate\Foundation\Auth\RegistersUsers.php
+//TIHP 20.6.2019 by xsoys
+
+
+step:2
+D:\XAMPP\htdocs\meena\blockchain\vendor\laravel\framework\src\Illuminate\Foundation\Auth\AuthenticatesUsers.php
+ public function username()    {
+        return 'first_hash_res'; ////TIHP 20.6.2019 by  return 'email';    }
+		
+step:3
+D:\XAMPP\htdocs\meena\blockchain\vendor\laravel\framework\src\Illuminate\Foundation\Auth\AuthenticatesUsers.php
+
+
+
+step4:
+D:\XAMPP\htdocs\meena\blockchain\resources\views\home.blade.php
+D:\XAMPP\htdocs\meena\blockchain\app\Http\Controllers\DashboardController.php
+D:\XAMPP\htdocs\meena\blockchain\resources\views\dashboard.blade.php
+D:\XAMPP\htdocs\meena\blockchain\routes\web.php
+   Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+  
+step5:
+D:\XAMPP\htdocs\meena\blockchain\app\Http\Controllers\HomeController.php
+  // $this->middleware('auth'); //TIHP 21.6.2019 by xsosys regards login issue 
+  
+
+
+
+
+Terminal:
+
+Step:1 https://tecadmin.net/clear-cache-laravel-5/
+D:\XAMPP\htdocs\meena\blockchain>php artisan cache:clear
+Application cache cleared!
+
+D:\XAMPP\htdocs\meena\blockchain>php artisan config:cache
+Configuration cache cleared!
+Configuration cached successfully!
+
+D:\XAMPP\htdocs\meena\blockchain>php artisan route:cache
+
+
+Database:
+MYSQL:
+Windows:
+        xampp control panel :https://www.youtube.com/watch?v=VTRxqkOmn34
+							  1.mysql - config -> Change to Port Part
+		                      2.mysql - mysql_error_log File 
+							  3.common config ->change to port part
+	 
+TOOL:
+
+TOOL:
+SQLSERVER:
+	CREATE TABLE currency (
+		  id              INT           NOT NULL    IDENTITY    PRIMARY KEY,
+		  name           VARCHAR(100)  NOT NULL,
+		  symbol          VARCHAR(100)  NOT NULL,
+		  type          VARCHAR(100)  NOT NULL,
+		  image          VARCHAR(100)  NOT NULL,
+		  class          VARCHAR(100)  NOT NULL,
+		);
+		
+	INSERT INTO currency
+	VALUES ('United','USD','fiat','',''); 
+
+	ALTER TABLE [yourTable] DROP COLUMN ID 
+	ALTER TABLE [yourTable] ADD ID INT IDENTITY(1,1)
+	
+	exec sp_rename 'currency.[class]' , 'color_nam', 'column'
+	EXEC sp_RENAME 'TableName.OldColumnName' , 'NewColumnName', 'COLUMN' 
+ALTER TABLE currency  Rename class to color_nam;
+	 
+2.WinZip
+
+
+TRADING SAMPLE SITE:
+https://testnet.blinktrade.com/#trading
+		
+DOUBT:
+19.6.2019
+     1.		Git Access How to use??
+	 2.		http://127.0.0.1:8000/bitcoin/public/ (NOT WORKING WITH PORT)
+	 3.		<script src="{{ asset('js/app.js') }}" defer></script> OR <script src="{{ url('/public/js/app.js') }}" defer></script> 
+	 4.DONE: <title>{{ config('app.name', 'BlockChain') }}</title>
+     5.		WinZip
+	 6.		database connection how to change without .env file directly connect to database.php
+	 
+20.6.2019
+     1.sqlserver query process (another database select,table values changes)
+	 2.laravel 5.8 auth core functionality encrypt_decrypt changes
+	 3.laravel multi auth how to use it??
+	 4.login redirect goto again login page using /home URL 
+21.6.2019
+	  1.Laravel What is a guard?
+	  2.login having issue for laravel 5.8 <home page redirection > & sub url.
+	  
+	  done.;table import code & database
+	  done;helper
+	  done.currency : <all details with in array>
+	       curl <mp,voulume,change>
+	 
+	 
